@@ -30,7 +30,7 @@
     </form>
 
     <button
-      class="badge badge-primary mr-2"
+      class="badge text-white bg-dark mr-2"
       *ngIf="!currentFeatureToggle.active"
       (click)="updateActiveStatus(true)"
     >
@@ -38,19 +38,19 @@
     </button>
     <button
       *ngIf="currentFeatureToggle.active"
-      class="badge badge-primary mr-2"
+      class="badge text-white bg-dark mr-2"
       (click)="updateActiveStatus(false)"
     >
       Set inactive
     </button>
 
-    <button class="badge badge-danger mr-2" (click)="removeFeatureToggle()">
+    <button class="badge text-white bg-dark mr-2" (click)="removeFeatureToggle()">
       Delete
     </button>
 
     <button
       type="submit"
-      class="badge badge-success mb-2"
+      class="badge text-white bg-dark mb-2"
       (click)="updateFeatureToggle()"
     >
       Update

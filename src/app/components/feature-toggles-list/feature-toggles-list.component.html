@@ -30,13 +30,13 @@
         {{ featureToggle.name }}
       </li>
     </ul>
-    <button class="mt-3 btn btn-sm btn-danger" (click)="removeAllFeatureToggles()">
+    <button class="mt-3 btn btn-sm text-white bg-dark" (click)="removeAllFeatureToggles()">
       Remove All
     </button>
-    <button *ngIf="isPressed" class="mt-3 ml-2 btn btn-sm btn-success" (click)="retrieveActiveFeatureToggles()">
+    <button *ngIf="isPressed" class="mt-3 ml-2 btn btn-sm text-white bg-dark" (click)="retrieveActiveFeatureToggles()">
       Get All Active Feature Toggles
     </button>
-    <button *ngIf="!isPressed" class="mt-3 ml-2 btn btn-sm btn-success" (click)="retrieveFeatureToggles()">
+    <button *ngIf="!isPressed" class="mt-3 ml-2 btn btn-sm text-white bg-dark" (click)="retrieveFeatureToggles()">
       Get All Feature Toggles
     </button>
   </div>
@@ -50,10 +50,10 @@
         <label><strong>Status:</strong></label>
         {{ currentFeatureToggle.active ? "active" : "inactive" }}
       </div>
-      <a class="badge badge-warning mr-2" routerLink="/feature-toggles/{{ currentFeatureToggle.id }}">
+      <a class="badge text-white bg-dark mr-2" routerLink="/feature-toggles/{{ currentFeatureToggle.id }}">
         Edit
       </a>
-      <a class="badge badge-danger" (click)="removeFeatureToggle(currentFeatureToggle.id)">
+      <a class="badge text-white bg-dark" (click)="removeFeatureToggle(currentFeatureToggle.id)">
         Delete
       </a>
     </div>
