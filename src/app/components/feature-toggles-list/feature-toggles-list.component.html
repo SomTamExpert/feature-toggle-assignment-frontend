@@ -1,0 +1,65 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by name"
+        [(ngModel)]="name"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchName()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Feature Toggle(s)</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let featureToggle of featureToggles; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="selectFeatureToggle(featureToggle, i)"
+      >
+        {{ featureToggle.name }}
+      </li>
+    </ul>
+    <button class="mt-3 btn btn-sm btn-danger" (click)="removeAllFeatureToggles()">
+      Remove All
+    </button>
+    <button *ngIf="isPressed" class="mt-3 ml-2 btn btn-sm btn-success" (click)="retrieveActiveFeatureToggles()">
+      Get All Active Feature Toggles
+    </button>
+    <button *ngIf="!isPressed" class="mt-3 ml-2 btn btn-sm btn-success" (click)="retrieveFeatureToggles()">
+      Get All Feature Toggles
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentFeatureToggle.id">
+      <h4>Selected Feature Toggle</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentFeatureToggle.name }}
+      </div>
+      <div>
+        <label><strong>Status:</strong></label>
+        {{ currentFeatureToggle.active ? "active" : "inactive" }}
+      </div>
+      <a class="badge badge-warning mr-2" routerLink="/feature-toggles/{{ currentFeatureToggle.id }}">
+        Edit
+      </a>
+      <a class="badge badge-danger" (click)="removeFeatureToggle(currentFeatureToggle.id)">
+        Delete
+      </a>
+    </div>
+    <div *ngIf="!currentFeatureToggle.id">
+      <br/>
+      <p>Please click on a feature toggle to view details</p>
+    </div>
+  </div>
+</div>

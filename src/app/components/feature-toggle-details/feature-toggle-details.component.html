@@ -1,0 +1,65 @@
+<div>
+  <div *ngIf="currentFeatureToggle.id" class="edit-form">
+    <h4>Edit Current Feature Toggle</h4>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="currentFeatureToggle.name"
+          name="name"
+        />
+      </div>
+      <div class="form-group">
+        <label>Status:</label>
+        <div class="form-check form-switch form-group">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="active"
+            [(ngModel)]="currentFeatureToggle.active"
+            name="active"
+          />
+          <label class="form-check-label">
+            {{ currentFeatureToggle.active ? "active" : "inactive" }}
+          </label>
+        </div>
+      </div>
+    </form>
+
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="!currentFeatureToggle.active"
+      (click)="updateActiveStatus(true)"
+    >
+      Set active
+    </button>
+    <button
+      *ngIf="currentFeatureToggle.active"
+      class="badge badge-primary mr-2"
+      (click)="updateActiveStatus(false)"
+    >
+      Set inactive
+    </button>
+
+    <button class="badge badge-danger mr-2" (click)="removeFeatureToggle()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateFeatureToggle()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentFeatureToggle.id">
+    <br/>
+    <p>Cannot access this Feature Toggle</p>
+  </div>
+</div>
